@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "react-hooks"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-underscore-dangle": "off",
+    "object-curly-newline": "off",
+    "consistent-return": "off",
+    "react/button-has-type": "off",
+    "camelcase": "off",
+    "no-multi-spaces": "off",
+    "react/jsx-curly-spacing": "off",
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [0, "error", "windows"],
+    "react/jsx-filename-extension": "off",
+    "import/no-dynamic-require": "off",
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": [
+          "navigation"
+        ]
+      }
+    ]
+  },
+  "env": {
+    "jest": true
+  }
+}
