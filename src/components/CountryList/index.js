@@ -3,6 +3,8 @@ import { useSelector }      from 'react-redux';
 
 import { useActions }    from '../../hooks';
 import { bucketActions } from '../../state/ducks/bucket';
+import Loading           from '../Loading';
+import Error             from '../Error';
 
 const CountryList = () => {
   const { countries, loading, error } = useSelector(({ bucket }) => bucket);
@@ -13,16 +15,11 @@ const CountryList = () => {
   }, [fetchCountries]);
 
   if (loading || countries.length === 0) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (error) {
-    return (
-      <div>
-        <p>Error!</p>
-        <p>{error}</p>
-      </div>
-    );
+    return <Error error={error} />;
   }
 
   return (
