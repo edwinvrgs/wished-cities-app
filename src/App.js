@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className="App container">
         <CountryList />
       </div>
     </Provider>

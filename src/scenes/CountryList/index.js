@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector }      from 'react-redux';
 
-import { bucketActions } from '../../state/ducks/bucket';
-import { useActions }    from '../../hooks';
-
+import { bucketActions }  from '../../state/ducks/bucket';
+import { useActions }     from '../../hooks';
 import { Error, Loading } from '../../components';
+
+import { Country } from './components';
 
 const CountryList = () => {
   const { countries, loading, error } = useSelector(({ bucket }) => bucket);
-  const { fetchCountries } = useActions(bucketActions);
+  const { fetchCountries, selectCountry } = useActions(bucketActions);
 
   useEffect(() => {
     fetchCountries();
@@ -23,12 +24,14 @@ const CountryList = () => {
   }
 
   return (
-    <div>
-      {
-        countries.map((country) => (
-          <p key={country}>{country}</p>
-        ))
-      }
+    <div className="tile is-ancestor">
+      <div className="tile is-parent">
+        {
+          countries.map((country) => (
+            <Country key={JSON.stringify(country)} country={country} onClick={selectCountry} />
+          ))
+        }
+      </div>
     </div>
   );
 };
