@@ -25,13 +25,11 @@ const CountryList = () => {
 
   return (
     <div className="tile is-ancestor">
-      <div className="tile is-parent">
-        {
-          countries.map((country) => (
-            <Country key={JSON.stringify(country)} country={country} onClick={selectCountry} />
-          ))
-        }
-      </div>
+      {
+        countries.map((country) => (
+          <Country key={JSON.stringify(country)} country={country} onClick={selectCountry} />
+        ))
+      }
     </div>
   );
 };

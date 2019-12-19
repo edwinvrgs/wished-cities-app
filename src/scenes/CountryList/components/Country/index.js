@@ -2,16 +2,18 @@ import React     from 'react';
 import PropTypes from 'prop-types';
 
 const Country = ({ country, onClick }) => (
-  <div
-    className="tile notification is-info"
-    style={{
-      cursor: 'pointer',
-    }}
-    onClick={() => onClick(country)}
-  >
-    <p>
-      {country}
-    </p>
+  <div className="tile is-parent">
+    <div
+      className="tile is-child notification is-info"
+      style={{
+        cursor: 'pointer',
+      }}
+      onClick={() => onClick(country)}
+    >
+      <p>
+        {country}
+      </p>
+    </div>
   </div>
 );
 
