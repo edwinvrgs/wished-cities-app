@@ -13,7 +13,7 @@ const apiCall = ({ dispatch }) => (next) => async (action) => {
   let error = null;
 
   try {
-    dispatch({ type: 'START_CALL' });
+    dispatch({ type: bucketTypes.START_CALL });
     const response = await APIClient(config);
     if (onSuccess) {
       onSuccess(response.data, dispatch);
@@ -26,7 +26,7 @@ const apiCall = ({ dispatch }) => (next) => async (action) => {
     error = e;
   } finally {
     dispatch({
-      type: 'END_CALL',
+      type: bucketTypes.END_CALL,
       payload: error,
     });
   }
