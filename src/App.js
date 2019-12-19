@@ -5,6 +5,8 @@ import configureStore from './state/store';
 
 import { CountryList } from './components';
 
+import 'bulma/bulma.sass';
+
 const App = () => {
   const store = configureStore();
 
