@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector }      from 'react-redux';
 
-import { useActions }    from '../../hooks';
 import { bucketActions } from '../../state/ducks/bucket';
-import Loading           from '../Loading';
-import Error             from '../Error';
+import { useActions }    from '../../hooks';
+
+import { Error, Loading } from '../../components';
 
 const CountryList = () => {
   const { countries, loading, error } = useSelector(({ bucket }) => bucket);

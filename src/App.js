@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import configureStore from './state/store';
 
-import { CountryList } from './components';
+import { CountryList } from './scenes';
 
 import 'bulma/bulma.sass';
 
