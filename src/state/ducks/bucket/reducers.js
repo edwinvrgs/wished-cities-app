@@ -39,6 +39,12 @@ const bucket = (state = {}, action) => {
         selectedCountry: payload,
       };
     }
+    case types.UPDATE_BUDGET: {
+      return {
+        ...state,
+        budget: parseInt(payload),
+      };
+    }
     default:
       return state;
   }
