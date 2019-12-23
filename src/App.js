@@ -4,7 +4,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 
 import configureStore from './state/store';
 
-import { BudgetInput, CityList, CountryList, SaveBucket } from './components';
+import { BudgetInput, CityList, CountryList } from './components';
 
 import { FULLPAGE_TEST_KEY } from './config/constants';
 
@@ -19,15 +19,24 @@ const App = () => {
       <ReactFullpage
         licenseKey={FULLPAGE_TEST_KEY}
         scrollingSpeed={1000}
-        sectionsColor={['#282c34', '#ff5f45', '#0798ec', '#ff5f45', '#0798ec']}
+        sectionsColor={['#0798ec', '#282c34', '#ff5f45', '#0798ec']}
+        autoScrolling={false}
         render={({ state, fullpageApi }) => (
           <ReactFullpage.Wrapper>
             <div className="section">
               <h3>Welcome to wished cities bucket!</h3>
+              <div className="has-text-centered">
+                <button
+                  className="button is-large is-dark is-centered"
+                  onClick={() => fullpageApi.moveSectionDown()}
+                >
+                  Lets go!
+                </button>
+              </div>
             </div>
             <div className="section">
+              <h3>Select a country</h3>
               <div>
-                <h3>Select a country</h3>
                 <CountryList onClick={() => fullpageApi.moveSectionDown()} />
               </div>
             </div>
@@ -37,11 +46,9 @@ const App = () => {
             </div>
             <div className="section">
               <h3>Select your wished cities</h3>
-              <CityList onClick={() => fullpageApi.moveSectionDown()} />
-            </div>
-            <div className="section">
-              <h3>Save your bucket</h3>
-              <SaveBucket />
+              <div>
+                <CityList onClick={() => fullpageApi.moveSectionDown()} />
+              </div>
             </div>
           </ReactFullpage.Wrapper>
         )}

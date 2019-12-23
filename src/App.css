@@ -3,7 +3,21 @@ body {
 }
 
 h3 {
-    font-size: 5em;
+    font-size: 3em;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 2.5em;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+h5 {
+    font-size: 2em;
     text-align: center;
     color: #fff;
     font-weight: 700;

@@ -7,6 +7,7 @@ import * as reducers from './ducks';
 export const initialState = {
   bucket: {
     countries: [],
+    cities: [],
     selectedCountry: null,
     selectedCities: [],
     budget: 0,

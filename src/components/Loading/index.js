@@ -2,7 +2,7 @@ import React from 'react';
 
 const Loading = () => (
   <div>
-    <p>Loading...</p>
+    <h3>Loading...</h3>
   </div>
 );
 

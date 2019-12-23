@@ -4,6 +4,7 @@ import types from './types';
 
 const bucket = (state = {}, action) => {
   const { type, payload, error } = action;
+  const { selectedCities } = state;
   switch (type) {
     case types.CLEAR: {
       return initialState.bucket;
@@ -43,6 +44,28 @@ const bucket = (state = {}, action) => {
       return {
         ...state,
         budget: parseInt(payload),
+      };
+    }
+    case types.SELECT_CITY: {
+      return {
+        ...state,
+        selectedCities: [...selectedCities, payload],
+      };
+    }
+    case types.REMOVE_CITY: {
+      const cityIndex = selectedCities.indexOf(payload);
+      return {
+        ...state,
+        selectedCities: [
+          ...selectedCities.slice(0, cityIndex),
+          ...selectedCities.slice(cityIndex + 1),
+        ],
+      };
+    }
+    case types.UPDATE_CITIES: {
+      return {
+        ...state,
+        cities: payload,
       };
     }
     default:

@@ -34,9 +34,9 @@ const CountryList = ({ onClick }) => {
             key={country.id}
             country={country}
             selectedCountry={selectedCountry}
-            onClick={(countryName) => {
+            onClick={() => {
               onClick();
-              selectCountry(countryName);
+              selectCountry(country.id);
             }}
           />
         ))
