@@ -9,7 +9,6 @@ const updateCities = createAction(types.UPDATE_CITIES);
 const selectCity = createAction(types.SELECT_CITY);
 const removeCity = createAction(types.REMOVE_CITY);
 const updateBudget = createAction(types.UPDATE_BUDGET);
-const saveBucket = createAction(types.SAVE_BUCKET);
 
 const fetchCountries = createAction(types.API_CALL, () => ({
   config: {
@@ -28,6 +27,20 @@ const fetchCities = createAction(types.API_CALL, (payload) => ({
   },
   onSuccess(data, dispatch) {
     dispatch(updateCities(data));
+  },
+}));
+
+const saveBucket = createAction(types.API_CALL, (payload) => ({
+  config: {
+    url: 'save-bucket',
+    method: 'post',
+    data: {
+      ...payload,
+    },
+  },
+  onSuccess(data, dispatch) {
+    console.log({ data });
+    alert(data);
   },
 }));
 

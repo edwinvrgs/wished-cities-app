@@ -14,11 +14,12 @@ const CityList = ({ onClick }) => {
   const {
     budget, cities, selectedCountry, selectedCities, loading, error,
   } = useSelector(({ bucket }) => bucket);
-  const { selectCity, removeCity, fetchCities } = useActions(bucketActions);
+  const { selectCity, removeCity, fetchCities, saveBucket } = useActions(bucketActions);
 
   const search = useFormInput('');
+  const name = useFormInput('Anna Doe');
 
-  const { cities: filteredCities, remainingBudget } = useMemo(() => {
+  const { cities: filteredCities, totalPrice } = useMemo(() => {
     const selectedCitiesWithInfo = cities.filter((city) => selectedCities.includes(city.id));
     const totalPrice = selectedCitiesWithInfo.reduce(
       (accum, selectedCity) => accum + selectedCity.price, 0,
@@ -27,9 +28,9 @@ const CityList = ({ onClick }) => {
 
     return ({
       cities: cities.filter(
-        (city) => selectedCities.includes(city.id) || city.price < remainingBudget,
+        (city) => selectedCities.includes(city.id) || city.price <= remainingBudget,
       ),
-      remainingBudget,
+      totalPrice,
     });
   }, [budget, cities, selectedCities]);
 
@@ -59,7 +60,7 @@ const CityList = ({ onClick }) => {
       <h4>
         Budget:
         {' '}
-        {remainingBudget}
+        {totalPrice}
         /
         {budget}
       </h4>
@@ -94,15 +95,32 @@ const CityList = ({ onClick }) => {
       </div>
       {
         areAllCitiesSelected && (
-          <div className="has-text-centered">
-            <button
-              className="button is-large is-dark is-centered"
-              onClick={() => {
-                onClick();
-              }}
-            >
-              Save bucket!
-            </button>
+          <div className="field has-addons has-addons-centered">
+            <div className="control">
+              <input
+                {...name}
+                className="input is-large is-info"
+                type="text"
+                placeholder="Enter your name..."
+              />
+            </div>
+            <div className="control">
+              <button
+                type="submit"
+                onClick={() => {
+                  saveBucket({
+                    owner: name.value,
+                    cities: selectedCities,
+                    cost: totalPrice,
+                    country: selectedCountry,
+                  });
+                  onClick();
+                }}
+                className="button is-large is-dark"
+              >
+                Save bucket!
+              </button>
+            </div>
           </div>
         )
       }

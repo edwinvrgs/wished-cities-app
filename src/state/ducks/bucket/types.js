@@ -9,5 +9,4 @@ export default {
   SELECT_CITY: 'bucket/SELECT_CITY',
   REMOVE_CITY: 'bucket/REMOVE_CITY',
   UPDATE_BUDGET: 'bucket/UPDATE_BUDGET',
-  SAVE_BUCKET: 'bucket/SAVE_BUCKET',
 };
