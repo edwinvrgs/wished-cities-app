@@ -39,8 +39,6 @@ const CityList = ({ onClick }) => {
     [filteredCities, selectedCities],
   );
 
-  console.log({ areAllCitiesSelected });
-
   useEffect(() => {
     if (selectedCountry) {
       fetchCities(selectedCountry);
