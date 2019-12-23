@@ -47,7 +47,7 @@ const App = () => {
             <div className="section">
               <h3>Select your wished cities</h3>
               <div>
-                <CityList onClick={() => fullpageApi.moveSectionUp()} />
+                <CityList />
               </div>
             </div>
           </ReactFullpage.Wrapper>

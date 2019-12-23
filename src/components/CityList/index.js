@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo } from 'react';
-import PropTypes                     from 'prop-types';
 import { useSelector }               from 'react-redux';
 
 import { useActions, useFormInput } from '../../hooks';
@@ -10,7 +9,7 @@ import Error   from '../Error';
 
 import { City } from './components';
 
-const CityList = ({ onClick }) => {
+const CityList = () => {
   const {
     budget, cities, selectedCountry, selectedCities, loading, error,
   } = useSelector(({ bucket }) => bucket);
@@ -112,7 +111,6 @@ const CityList = ({ onClick }) => {
                     cost: totalPrice,
                     country: selectedCountry,
                   });
-                  onClick();
                 }}
                 className="button is-large is-dark"
               >
@@ -126,8 +124,6 @@ const CityList = ({ onClick }) => {
   );
 };
 
-CityList.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
+CityList.propTypes = {};
 
 export default CityList;

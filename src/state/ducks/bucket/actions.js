@@ -38,6 +38,9 @@ const saveBucket = createAction(types.API_CALL, (payload) => ({
       ...payload,
     },
   },
+  onSuccess(data, dispatch) {
+    alert('Bucket saved successfully!');
+  },
 }));
 
 export default {
