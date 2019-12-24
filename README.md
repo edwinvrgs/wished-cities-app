@@ -1,6 +1,6 @@
 ## Wished Cities app
 
-### Notes
+### Features
 - React Fullpage for UX.
 - Latest version of React, using hooks for **everything**.
 - Latest version of Redux, using hooks for **everything** (again).
