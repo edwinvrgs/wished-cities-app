@@ -1,4 +1,4 @@
-export const ENV = 'development';
+export const ENV = process.env.NODE_ENV || 'development';
 
 export const API_VERSION = 'v1';
 
