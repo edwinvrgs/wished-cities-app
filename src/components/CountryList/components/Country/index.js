@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const Country = ({ country: { name, id }, selectedCountry, onClick }) => (
   <div className="tile is-parent">
     <div
+      data-testid="country"
       className={`tile is-child notification ${selectedCountry === id ? 'is-dark' : 'is-light'}`}
       style={{
         cursor: 'pointer',

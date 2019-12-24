@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const City = ({ city: { name, price, id }, selectedCities, onClick }) => (
   <div className="column is-narrow">
     <div
+      data-testid="city"
       className={`notification ${selectedCities.includes(id)
         ? 'is-dark'
         : 'is-light'}`}

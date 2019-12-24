@@ -15,6 +15,7 @@ const BudgetInput = ({ onClick }) => {
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <input
           {...budget}
+          data-testid="budget-button"
           className="input is-large is-info"
           type="text"
           placeholder="Your budget..."

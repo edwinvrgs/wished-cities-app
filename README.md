@@ -5,6 +5,7 @@
 - Latest version of React, using hooks for **everything**.
 - Latest version of Redux, using hooks for **everything** (again).
 - Unit testing with `jest` and `react-test-renderer`.
+- A Dockerfile for easy dockerizing.
 
 ### Project structure
 - All the components are structured by the following rules:
@@ -16,7 +17,7 @@
 
 ### Try it!
 In your local:
-- Clone the project
-- `npm start`
+- Clone the project.
+- `npm install`. Install dependencies.
+- `npm start`... If you want to test: `npm test`
 - Play around!
-- If you want to test: `npm test`
