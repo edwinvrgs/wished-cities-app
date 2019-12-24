@@ -64,9 +64,10 @@ const CityList = () => {
       <div className="field">
         <div className="control">
           <input
+            {...search}
             className="input is-large is-info"
             type="text"
-            placeholder="Search a city" {...search}
+            placeholder="Search a city"
           />
         </div>
       </div>

@@ -10,9 +10,7 @@ const Country = ({ country: { name, id }, selectedCountry, onClick }) => (
       }}
       onClick={onClick}
     >
-      <p>
-        {name}
-      </p>
+      <p>{name}</p>
     </div>
   </div>
 );
