@@ -17,7 +17,11 @@ export const initialState = {
 };
 
 const configureStore = (preloadedState = initialState) => {
-  const middlewares = [logger, ...api];
+  const devOnlyMiddlewares = [logger];
+  const middlewares = [
+    ...(process.env.NODE_ENV === 'development' ? devOnlyMiddlewares : []),
+    ...api,
+  ];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
   const enhancers = [middlewareEnhancer];
