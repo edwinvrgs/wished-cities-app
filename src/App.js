@@ -25,6 +25,27 @@ const App = () => {
           <ReactFullpage.Wrapper>
             <div className="section">
               <h3>Welcome to wished cities bucket!</h3>
+              <p>How to use it:</p>
+              <p>
+                <strong>1.</strong>
+                {' '}
+                Select a country
+              </p>
+              <p>
+                <strong>2.</strong>
+                {' '}
+                Define your budget
+              </p>
+              <p>
+                <strong>3.</strong>
+                {' '}
+                Select as many cities as your budget allows you
+              </p>
+              <p>
+                <strong>4.</strong>
+                {' '}
+                Save it all!
+              </p>
               <div className="has-text-centered">
                 <button
                   className="button is-large is-dark is-centered"
