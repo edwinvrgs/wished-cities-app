@@ -6,16 +6,15 @@ import '@testing-library/jest-dom/extend-expect';
 
 import App from './App';
 
-window.scrollTo = jest.fn();
-window.alert = jest.fn();
-
-const mockAxiosWithCustomData = (mockedData) => {
+const mockAPIWithCustomData = (mockedData) => {
   APIClient.mockImplementationOnce(() => Promise.resolve(mockedData));
 };
 
 describe('App', () => {
   it('Should save a bucket with some data', async () => {
-    mockAxiosWithCustomData({
+    const { getByTestId, getByText, getAllByTestId } = render(<App />);
+
+    mockAPIWithCustomData({
       data: [
         {
           id: 1,
@@ -23,8 +22,6 @@ describe('App', () => {
         },
       ],
     });
-
-    const { getByTestId, getByText, getAllByTestId } = render(<App />);
 
     // First section
     // Click 'Lets go!' button
@@ -34,7 +31,7 @@ describe('App', () => {
     // Select a country
     await waitForElement(() => getByTestId('country'));
 
-    mockAxiosWithCustomData({
+    mockAPIWithCustomData({
       data: [
         {
           id: 1,
@@ -67,6 +64,12 @@ describe('App', () => {
     // Save the budget
     fireEvent.click(getByText('Save bucket!'));
 
+    // Asserts
+    // Verify that the API was called the correct number of times
+    expect(APIClient)
+      .toHaveBeenCalledTimes(3);
+    // Verify the final API Call with the proper data
+
     const finalData = {
       url: 'save-bucket',
       method: 'post',
@@ -80,10 +83,6 @@ describe('App', () => {
         owner: 'Anna Doe',
       },
     };
-
-    expect(APIClient)
-      .toHaveBeenCalledTimes(3);
-    // Verify the final API Call with the proper data
     expect(APIClient)
       .toHaveBeenCalledWith(finalData);
   });
