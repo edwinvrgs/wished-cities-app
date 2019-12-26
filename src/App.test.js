@@ -1,10 +1,14 @@
-import React                                       from 'react';
-import { fireEvent, render, wait, waitForElement } from '@testing-library/react';
-import { APIClient }                               from './config/constants';
+import React                                 from 'react';
+import { fireEvent, render, waitForElement } from '@testing-library/react';
+import { APIClient }                         from './config/constants';
 
 import '@testing-library/jest-dom/extend-expect';
 
 import App from './App';
+
+// Mocks
+window.scrollTo = jest.fn();
+window.alert = jest.fn();
 
 const mockAPIWithCustomData = (mockedData) => {
   APIClient.mockImplementationOnce(() => Promise.resolve(mockedData));
@@ -12,8 +16,6 @@ const mockAPIWithCustomData = (mockedData) => {
 
 describe('App', () => {
   it('Should save a bucket with some data', async () => {
-    const { getByTestId, getByText, getAllByTestId } = render(<App />);
-
     mockAPIWithCustomData({
       data: [
         {
@@ -22,6 +24,8 @@ describe('App', () => {
         },
       ],
     });
+
+    const { getByTestId, getByText, getAllByTestId } = render(<App />);
 
     // First section
     // Click 'Lets go!' button
@@ -51,7 +55,6 @@ describe('App', () => {
     // Third section
     // Input the budget
     fireEvent.change(getByTestId('budget-button'), { target: { value: 10000 } });
-    await wait();
     fireEvent.click(getByText('Save budget!'));
 
     // Fourth section
@@ -62,6 +65,10 @@ describe('App', () => {
 
     // Fifth section
     // Save the budget
+    mockAPIWithCustomData({
+      data: 'Some POST return',
+    });
+
     fireEvent.click(getByText('Save bucket!'));
 
     // Asserts
